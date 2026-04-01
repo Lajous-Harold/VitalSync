@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", timestamp: new Date() });
+  res.json({ status: "ok-from-update-health", service: "vitalsync-api" });
 });
 
 app.get("/api/activities", (req, res) => {
