@@ -1,0 +1,25 @@
+node_modules/ 
+#les dépendances sont volumineuses et peuvent être réinstallées à partir du package.json.
+.env 
+#ce fichier peut contenir des informations sensibles et propres à l’environnement local.
+.env.* 
+#permet d’ignorer les variantes d’environnement locales.
+!.env.example 
+#on conserve un exemple versionné pour documenter les variables attendues.
+coverage/ 
+#dossier généré automatiquement par les outils de test.
+dist/ 
+#répertoire de build généré, inutile à versionner.
+build/ 
+#autre répertoire de génération possible selon les outils utilisés.
+npm-debug.log* 
+#fichiers de logs temporaires produits en cas d’erreur npm.
+yarn-debug.log*
+yarn-error.log* 
+#mêmes raisons pour Yarn.
+.DS_Store 
+#fichier système propre à macOS.
+.vscode/ 
+#configuration locale de l’éditeur, non nécessaire au projet.
+.idea/ 
+#configuration locale JetBrains, non nécessaire au projet.
