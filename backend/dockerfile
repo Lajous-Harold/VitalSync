@@ -1,0 +1,27 @@
+# Multi-stage build : le premier stage installe les dépendances et exécute les tests,
+# tandis que le second ne conserve que le nécessaire pour l’exécution en production.
+# Cette approche réduit la taille de l’image finale et limite la surface d’attaque,
+# car les outils de test et dépendances de développement ne sont pas embarqués en production.
+
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm test
+
+FROM node:20-alpine AS production
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
+
+COPY server.js ./
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
